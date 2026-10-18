@@ -1,4 +1,17 @@
 /*
+    -- Neon Variables --
+*/
+
+:root {
+    --neon-pink: #ff2e88;
+    --neon-cyan: #00f0ff;
+    --neon-purple: #b026ff;
+    --neon-yellow: #fff35c;
+    --text-light: #f4eaff;
+    --panel-bg: rgba(16, 8, 32, .85);
+}
+
+/*
     -- General Styles --
 */
 
@@ -8,6 +21,7 @@
     border: 0;
     box-sizing: border-box;
     font-family: 'DynaPuff', cursive;
+
 }
 
 body {
@@ -15,8 +29,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #B33951;
-    
+    background: radial-gradient(ellipse at center, #2a0f44 0%, #0a0514 70%, #05030a 100%);
 }
 
 /*
@@ -26,25 +39,34 @@ body {
 .selection {
     padding: 50px 80px;
     border-radius: 8px;
-    background: #f9f9f9;
+    background: var(--panel-bg);
     text-align: center;
-    box-shadow: 6px 4px 20px rgba(0, 0, 0, .1),
-                inset 6px 4px 12px rgba(0, 0, 0, .2);
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 6px var(--neon-cyan),
+                0 0 18px rgba(0, 240, 255, .45),
+                inset 0 0 12px rgba(0, 240, 255, .25);
 }
 
 .selection h2 {
-    color: #B33951;
+    color: var(--neon-pink);
     font-size: 4rem;
     font-weight: 600;
     font-variant: small-caps;
+    text-shadow: 0 0 4px #fff,
+                 0 0 10px var(--neon-pink),
+                 0 0 22px var(--neon-pink),
+                 0 0 40px var(--neon-pink);
+    animation: neon-flicker 4s infinite;
 }
 
 .selection p {
-    color: #222;
+    color: var(--text-light);
     font-size: 1.5rem;
     font-weight: 500;
     font-variant: small-caps;
     margin-top: 30px;
+    text-shadow: 0 0 6px var(--neon-purple),
+                 0 0 14px var(--neon-purple);
 }
 
 .selection .players {
@@ -54,19 +76,26 @@ body {
 
 .selection .players .player {
     cursor: pointer;
-    color: #B33951;
+    color: var(--neon-cyan);
+    background: transparent;
     width: 5.5rem;
     height: 4rem;
     margin: 0 4px;
     font-size: 2rem;
     border-radius: 4px;
-    border: 3px solid #B33951;
-    transition: .4s;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 6px var(--neon-cyan),
+                inset 0 0 6px rgba(0, 240, 255, .4);
+    text-shadow: 0 0 6px var(--neon-cyan);
+    transition: .3s;
 }
 
 .selection .players .player:hover {
-    color: #fff;
-    background: #B33951;
+    color: #0a0514;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan),
+                0 0 30px var(--neon-cyan);
+    text-shadow: none;
 }
 
 /*
@@ -105,6 +134,12 @@ body {
     }
 }
 
+/* Blinking effect on the title */
+@keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: .6; }
+}
+
 /*
     -- PlayBoard Styles --
 */
@@ -113,10 +148,12 @@ body {
     display: none;
     padding: 30px;
     border-radius: 8px;
-    background: #f9f9f9;
+    background: var(--panel-bg);
     text-align: center;
-    box-shadow: 6px 4px 20px rgba(0, 0, 0, .1),
-                inset 6px 4px 12px rgba(0, 0, 0, .2);
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 6px var(--neon-pink),
+                0 0 18px rgba(255, 46, 136, .45),
+                inset 0 0 12px rgba(255, 46, 136, .25);
 }
 
 table td {
@@ -124,11 +161,22 @@ table td {
     height: 3em;
     font-size: 2em;
     text-align: center;
-    background: #ff9eb150;
-    border: 2px solid #f9f9f9;
+    background: rgba(255, 46, 136, .06);
+    border: 2px solid var(--neon-pink);
     border-radius: 8px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 6px var(--neon-cyan),
+                 0 0 14px var(--neon-cyan);
+    box-shadow: 0 0 4px var(--neon-pink),
+                inset 0 0 8px rgba(255, 46, 136, .3);
     cursor: pointer;
-    transition: .4s linear;
+    transition: .3s linear;
+}
+
+table td:hover {
+    box-shadow: 0 0 10px var(--neon-pink),
+                0 0 22px var(--neon-pink),
+                inset 0 0 10px rgba(255, 46, 136, .5);
 }
 
 /*
@@ -137,18 +185,25 @@ table td {
 
 .reset {
     cursor: pointer;
-    color: #B33951;
+    color: var(--neon-yellow);
+    background: transparent;
     padding: 8px 18px;
     margin-top: 30px;
     font-size: 1.5rem;
     border-radius: 4px;
-    border: 3px solid #B33951;
-    transition: .4s;
+    border: 2px solid var(--neon-yellow);
+    box-shadow: 0 0 6px var(--neon-yellow),
+                inset 0 0 6px rgba(255, 243, 92, .4);
+    text-shadow: 0 0 6px var(--neon-yellow);
+    transition: .3s;
 }
 
 .reset:hover {
-    color: #fff;
-    background: #B33951;
+    color: #0a0514;
+    background: var(--neon-yellow);
+    box-shadow: 0 0 12px var(--neon-yellow),
+                0 0 30px var(--neon-yellow);
+    text-shadow: none;
 }
 
 /*
@@ -156,17 +211,23 @@ table td {
 */
 
 .winner {
-    /* display: none; */
+    /*display: none;*/
     padding: 40px 50px;
     border-radius: 8px;
-    background: #f9f9f9;
+    background: var(--panel-bg);
     text-align: center;
-    box-shadow: 6px 4px 20px rgba(0, 0, 0, .1),
-                inset 6px 4px 12px rgba(0, 0, 0, .2);
+    border: 2px solid var(--neon-purple);
+    box-shadow: 0 0 6px var(--neon-purple),
+                0 0 18px rgba(176, 38, 255, .45),
+                inset 0 0 12px rgba(176, 38, 255, .25);
 }
 
 .winner h3 {
     font-size: 30px;
     font-weight: 500;
     font-variant: small-caps;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 6px var(--neon-yellow),
+                 0 0 18px var(--neon-yellow),
+                 0 0 30px var(--neon-pink);
 }

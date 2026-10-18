@@ -94,7 +94,6 @@ const checkWin = (board, player) => {
         }
     }
     return gameWon;
-
 }
 
 const gameOver = gameWon => {
