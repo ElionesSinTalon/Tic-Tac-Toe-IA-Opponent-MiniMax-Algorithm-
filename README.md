@@ -4,7 +4,7 @@ A browser-based Tic-Tac-Toe game where you play against a computer opponent that
 
 ## Play online
 
-[Open the web deployment on GitHub Pages](https://elionesintalon.github.io/Tic-Tac-Toe-IA-Opponent-MiniMax-Algorithm-/).
+[Open the web deployment](https://elionesintalon-tictactoe-d68188.netlify.app).
 
 ## How to play
 
@@ -24,4 +24,4 @@ The computer evaluates possible future moves using Minimax. It assigns scores to
 
 ## Run locally
 
-No build step, package installation, or server is required. Download or clone the repository and open `index.html` in a web browser. The page loads the DynaPuff font from Google Fonts; if you are offline, the game still works with the browser's fallback font.
+No build step, package installation, or server is required. Download or clone the repository and open `index.html` in a web browser.
