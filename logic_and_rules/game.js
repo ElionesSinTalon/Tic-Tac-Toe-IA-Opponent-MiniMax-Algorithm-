@@ -17,16 +17,11 @@ const playerSelect = player => {
         cell.addEventListener('click', handleClick, false);
     }
 
-    if (computer === 'X') {
-        turn(bestSpot(), computer);
-    }
-
     selection.classList.add('fadeOut');
     setTimeout(() => { selection.style.display = 'none' }, 290);
 
     playBoard.classList.add('fadeIn');
     setTimeout(() => { playBoard.style.display = 'block' }, 290);
-
 }
 
 const startGame = () => {
@@ -47,12 +42,12 @@ const startGame = () => {
         cell.style.color = '#000';
         cell.style.background = '#ff9eb150';
     }
-
 }
 
 startGame();
 
 const handleClick = gameSpace => {
+
     if (computerTurn) return;
 
     if (typeof gameBoard[gameSpace.target.id] === 'number') {
@@ -61,8 +56,8 @@ const handleClick = gameSpace => {
         if (!checkWin(gameBoard, user) && !checkTie()) {
             computerTurn = true;
             setTimeout(() => {
-                 computerTurn = false;
-                turn(bestSpot(), computer)
+                computerTurn = false;
+                turn(bestSpot(), computer);
             }, 500);
         }
     }
@@ -78,7 +73,6 @@ const turn = (spaceId, player) => {
         gameOver(gameWon);
         return;
     }
-
     checkTie();
 }
 
@@ -123,7 +117,10 @@ const declareWinner = message => {
          
     }, 1500);
 }
-const emptySquares = () => {return gameBoard.filter((elm, i) => i === elm);}
+
+const emptySquares = () => {
+    return gameBoard.filter((elm, i) => i === elm);
+}
 
 const checkTie = () => {
 
@@ -138,6 +135,5 @@ const checkTie = () => {
         declareWinner("The Game Is Tie!");
         return true;
     }
-
     return false;
 }

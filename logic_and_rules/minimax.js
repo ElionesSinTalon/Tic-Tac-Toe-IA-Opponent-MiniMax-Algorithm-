@@ -1,5 +1,21 @@
 const bestSpot = () => {
-    return minMax(gameBoard, computer).index;
+
+    let bestScore = -Infinity;
+    let bestMoves = [];
+
+    for (let idx of emptySquares()){
+        gameBoard[idx] = computer;
+        const score = minMax(gameBoard, user).score;
+        gameBoard[idx] = idx;
+
+        if (score > bestScore) {
+            bestScore = score;
+            bestMoves = [idx];
+        } else if (score === bestScore) {
+            bestMoves.push(idx);
+        }
+    }
+    return bestMoves[Math.floor(Math.random() * bestMoves.length)];
 }
 
 const minMax = (testBoard, player) => {
